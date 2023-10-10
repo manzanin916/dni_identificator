@@ -2,30 +2,15 @@ package basic;
 
 public class dniIdentificator {
     public static void main(String[] args) {
-        System.out.println(DNICorrector("12345678Z"));
+        System.out.println(IdentificadorDNI("52044681M"));
     }
 
-    public static boolean DNICorrector(String dni){
+    public static boolean IdentificadorDNI(String dni){
+
+        String patrón = "TRWAGMYFPDXBNJZSQVHLCKE";
         
-        int value = Integer.parseInt(dni.substring(0, dni.length()-1)) % 23;
+        int módulo = Integer.parseInt(dni.substring(0, dni.length()-1)) % 23;
 
-        return EquivalenciaArcana(dni.charAt(dni.length()-1)) == value;
+        return (dni.charAt(dni.length()-1) == patrón.charAt(módulo)) && dni.length() == 9;
     }
-
-    public static int EquivalenciaArcana(char letra){
-
-        String cadenaMágica = "TRWAGMYFPDXBNJZSQVHLCKE";
-
-        int modulo = 0;
-
-        for(int i = 0; i < cadenaMágica.length(); i++){
-            if(letra == cadenaMágica.charAt(i)){
-                modulo = i;
-            }
-        }
-
-        return modulo;
-    }
-
-    
 }
